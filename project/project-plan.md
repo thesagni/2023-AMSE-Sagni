@@ -21,7 +21,7 @@ The analysis helps to do correlate increase in road accidents with the increase 
 * Metadata URL 2: https://data.europa.eu/
 * Data URL 1: https://opendata.stadt-muenster.de/dataset/verkehrsz%C3%A4hlung-fahrradverkehr-tagesaktuelle-daten/resource/c072d000-ffb3-4e79-8811 
 * Data URL 2: https://data.europa.eu/data/datasets/19318ba9-c996-43bd-a064-2457d68ebbc5?locale=en
-* Data URL 2: https://data.europa.eu/data/datasets/rhein-kreis-neuss-2020-strassenverkehrsunfalle-rhein-kreis-neuss?locale=en
+* Data URL 3: https://data.europa.eu/data/datasets/rhein-kreis-neuss-2020-strassenverkehrsunfalle-rhein-kreis-neuss?locale=en
 * Data Type: CSV
 
 This projects focuses on how the rate of road accidents have changed (increased) with the increase in the bicycle traffic in the recent years. It focuses on the data from 2019-2023.
