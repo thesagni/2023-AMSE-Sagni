@@ -30,7 +30,9 @@ This projects focuses on how the rate of road accidents have changed (increased)
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Example Issue [#1][i1]
-2. ...
+1. Extract Data from the two data sources
+2. Create graph
+3. Calculate the occurence of accidents with bicycle traffic from graph
+4. Draw conclusion 
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
