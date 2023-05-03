@@ -3,7 +3,7 @@
 ## Summary
 
 <!-- Describe your data science project in max. 5 sentences. -->
-It has been seen in recent years that the rate of accidents has increased. S
+It has been seen in recent years that the rate of accidents has increased. 
 So aim of this project is to identify how much of the increased rate of accidents is related to the increase in bicycle traffic.
 So, this projects analyzes the increase of road accidents with increase in bicycle traffic. 
 
