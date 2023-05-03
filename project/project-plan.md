@@ -3,23 +3,28 @@
 ## Summary
 
 <!-- Describe your data science project in max. 5 sentences. -->
-This projects analyzes XY.
+It has been seen in recent years that the rate of accidents has increased. S
+So aim of this project is to identify how much of the increased rate of accidents is related to the increase in bicycle traffic.
+So, this projects analyzes the increase of road accidents with increase in bicycle traffic. 
 
 ## Rationale
 
 <!-- Outline the impact of the analysis, e.g. which pains it solves. -->
-The analysis helps XY to do YZ.
+The analysis helps to do correlate increase in road accidents with the increase in bicycle traffic.
 
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
 ### Datasource1: ExampleSource
-* Metadata URL: https://mobilithek.info/offers/-6901989592576801458
-* Data URL: https://raw.githubusercontent.com/od-ms/radverkehr-zaehlstellen/main/100035541/2019-01.csv
+* Metadata URL 1: https://mobilithek.info/offers/-6901989592576801458
+* Metadata URL 2: https://data.europa.eu/
+* Data URL 1: https://opendata.stadt-muenster.de/dataset/verkehrsz%C3%A4hlung-fahrradverkehr-tagesaktuelle-daten/resource/c072d000-ffb3-4e79-8811 
+* Data URL 2: https://data.europa.eu/data/datasets/19318ba9-c996-43bd-a064-2457d68ebbc5?locale=en
+* Data URL 2: https://data.europa.eu/data/datasets/rhein-kreis-neuss-2020-strassenverkehrsunfalle-rhein-kreis-neuss?locale=en
 * Data Type: CSV
 
-Short description.
+This projects focuses on how the rate of road accidents have changed (increased) with the increase in the bicycle traffic in the recent years. It focuses on the data from 2019-2023.
 
 ## Work Packages
 
