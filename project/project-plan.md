@@ -16,13 +16,17 @@ The analysis helps to do correlate increase in road accidents with the increase 
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: ExampleSource
+### Datasource1:Mobilithek
 * Metadata URL 1: https://mobilithek.info/offers/-6901989592576801458
-* Metadata URL 2: https://data.europa.eu/
 * Data URL 1: https://opendata.stadt-muenster.de/dataset/verkehrsz%C3%A4hlung-fahrradverkehr-tagesaktuelle-daten/resource/c072d000-ffb3-4e79-8811 
-* Data URL 2: https://data.europa.eu/data/datasets/19318ba9-c996-43bd-a064-2457d68ebbc5?locale=en
-* Data URL 3: https://data.europa.eu/data/datasets/rhein-kreis-neuss-2020-strassenverkehrsunfalle-rhein-kreis-neuss?locale=en
 * Data Type: CSV
+Data of bicycle counting stations in city of Münster
+
+### Datasource2:Europa
+* Metadata URL 2: https://www.destatis.de/
+* Data URL 2: https://www-genesis.destatis.de/genesis/online?language=en&sequenz=statistikTabellen&selectionname=46241#abreadcrumb
+* Data Type: PDF
+Road Accident Data in city of Münster
 
 This projects focuses on how the rate of road accidents have changed (increased) with the increase in the bicycle traffic in the recent years. It focuses on the data from 2019-2023.
 
