@@ -22,7 +22,7 @@ The analysis helps to do correlate increase in road accidents with the increase 
 * Data Type: CSV
 Data of bicycle counting stations in city of Münster
 
-### Datasource2:Europa
+### Datasource2:Federal Statistical Office of Germany
 * Metadata URL 2: https://www.destatis.de/
 * Data URL 2: https://www-genesis.destatis.de/genesis/online?language=en&sequenz=statistikTabellen&selectionname=46241#abreadcrumb
 * Data Type: PDF
