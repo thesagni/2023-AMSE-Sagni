@@ -1,2 +1,3 @@
 import pandas as pd
-df =
+#downloading 1st data souce
+df = pd.read_csv
