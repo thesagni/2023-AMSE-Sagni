@@ -2,7 +2,7 @@ import pandas as pd
 from sqlalchemy import String, TEXT, INTEGER, Float, DECIMAL
 
 #loading from data souce
-df = pd.read_csv('https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit/exports/csv',sep=";", on_bad_lines='skip')
+datafield = pd.read_csv('https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit/exports/csv',sep=";", on_bad_lines='skip')
 
 #changing column types
 columnTypes = {'column_1': INTEGER, 'column_2': String, 'column_3': String, 'column_4': String, 'column_5': String,
@@ -10,4 +10,4 @@ columnTypes = {'column_1': INTEGER, 'column_2': String, 'column_3': String, 'col
                'column_11': TEXT,'column_12': String, 'geo_punkt': DECIMAL}
 
 #saving table to sqlite file
-df.to_sql('airports','sqlite:///airports.sqlite', if_exists='replace', index=False)
+datafield.to_sql('airports','sqlite:///airports.sqlite', if_exists='replace', index=False)
