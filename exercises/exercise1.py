@@ -10,4 +10,4 @@ columnTypes = {'column_1': INTEGER, 'column_2': String, 'column_3': String, 'col
                'column_11': TEXT,'column_12': String, 'geo_punkt': DECIMAL}
 
 #saving table to sqlite file
-datafield.to_sql('airports','sqlite:///airports.sqlite', if_exists='replace', index=False)
+datafield.to_sql('airports','sqlite:///./exercises/airports.sqlite', if_exists='replace', index=False)
