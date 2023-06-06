@@ -47,14 +47,13 @@ pipeline TrainstopsPipeline
         ];
     }
 
-    block DataLoader oftype SQLiteLoader { table: "Trainstops"; file: "trainstops.sqlite";}
+    block TrainDataLoader oftype SQLiteLoader { table: "Trainstops"; file: "trainstops.sqlite";}
 
     DataExtractor
         ->TrainsstopTextFileInterpreter
         ->TrainsstopCSVInterpreter
-        ->DropColumn
-        ->TrainsstopTableInterpreter
-        ->DataLoader;
+        ->TrainsTableInterpreter
+        ->TrainDataLoader;
 }
 
 
