@@ -3,36 +3,29 @@ name: Proj_feedback
 on:
   push:
     branches:
-    - main
-    
+      - main
 
 jobs:
   Project-feedback:
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        path: main
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: main
 
-    
-    - name: Set up Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 'lts/*'
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
 
-    
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
 
-    # Install python
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
-    
-
-
-    # Run project feedback
-    - name: Project feedback
-      run: |
-         ./project/tests.sh
+      - name: Project feedback
+        run: |
+          cd main/project
+          chmod +x tests.sh
+          ./tests.sh
