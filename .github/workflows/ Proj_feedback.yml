@@ -36,4 +36,6 @@ jobs:
     # Run project feedback
     - name: Project feedback
       run: |
-        ./project/tests.sh
+        chmod u+r+x ./main/project/test.sh
+        cd ./main/project
+        ./test.sh
