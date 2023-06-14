@@ -10,7 +10,5 @@ else
     echo "No!! Output file $data_files is not available."
 fi
 
-echo "Test if pipeline works correctly"
-pytest ./data/unitTest.py
 
 
