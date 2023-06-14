@@ -15,30 +15,22 @@ jobs:
         with:
           path: main
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'
+      
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      # Install python
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Specify the desired Python version
+         python-version: 3.11
 
       - name: Install dependencies
         run: |
           cd main/project
           pip install -r requirements.txt  # Install project dependencies
 
-      - name: Project feedback
+# Run exercise feedback
+      - name: Exercise feedback
         run: |
-          cd main/project
-          python3 AutoPipeLine.py
-          data_files="Bicycle_data.sqlite"
-          if [ -f "$data_files" ]; then
-            echo "Yes! Output file $data_files is available."
-          else
-            echo "No! Output file $data_files is not available."
-          fi
-          echo "Test if pipeline works correctly"
-          pytest ./data/unitTest.py
+         chmod u+r+x ./main/project/tests.sh
+         cd ./main/project
+         ./tests.sh
