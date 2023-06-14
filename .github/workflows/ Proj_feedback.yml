@@ -1,39 +1,39 @@
-name: Proj_feedback
+name: Automated Dataset Testing
 
 on:
   push:
     branches:
     - main
-    paths:
-    - project/**
 
 jobs:
-  Project-feedback:
+  exercise-feedback:
     runs-on: ubuntu-latest
     steps:
-    
     - name: Checkout
       uses: actions/checkout@v3
       with:
         path: main
 
-    
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
         node-version: 'lts/*'
-
-    
 
     # Install python
     - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
         python-version: 3.11
-    
 
-
-    # Run project feedback
-    - name: Project feedback
+       # Run exercise feedback
+    - name: Install dependencies
       run: |
-         ./project/ci/tests.sh
+        echo "loading requirements"
+        pip install -r ./main/project/requirements.txt 
+
+    # Run exercise feedback
+    - name: Exercise feedback
+      run: |
+        chmod u+r+x ./main/project/test.sh
+        cd ./main/project
+        ./test.sh
