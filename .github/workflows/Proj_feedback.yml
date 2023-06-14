@@ -5,40 +5,40 @@ on:
     branches:
     - main
     paths:
-    - exercises/**
+    - project/**
 
 jobs:
-  exercise-feedback:
+  Project-feedback:
     runs-on: ubuntu-latest
     steps:
+    
     - name: Checkout
       uses: actions/checkout@v3
       with:
         path: main
 
-    - name: Checkout exercise feedback
-      uses: actions/checkout@v3
-      with:
-        repository: jvalue/amse-exercise-feedback
-        path: grading
-
+    
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
         node-version: 'lts/*'
 
-    # Install jayvee
-    - name: Set up Jayvee
-      run: |
-        ./grading/ci/setup_jayvee.sh
+    
 
     # Install python
     - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
         python-version: 3.11
-
-    # Run exercise feedback
-    - name: Exercise feedback
+        
+    # Install dependencies
+    - name: Install dependencies
       run: |
-        ./grading/ci/run_grading.sh
+        echo "Installing dependencies"
+        pip install -r ./main/project/requirements.txt 
+
+
+    # Run project feedback
+    - name: Project feedback
+      run: |
+        ./project/tests.sh
