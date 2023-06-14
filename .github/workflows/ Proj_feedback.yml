@@ -35,4 +35,4 @@ jobs:
     # Run project feedback
     - name: Project feedback
       run: |
-         ./project/ci/tests.sh
+         ./main/project/tests.sh
