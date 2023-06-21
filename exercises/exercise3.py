@@ -1,10 +1,10 @@
 import pandas as pd
-import sqlalchemy as sa
+from sqlalchemy import String, TEXT, INTEGER, Float, DECIMAL,BIGINT
 
 cols_sql = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
 # Download the CSV file
 url = "https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv"
-df = pd.read_csv(url,sep=';', encoding="latin1", skiprows=6, skipfooter=4, usecols=cols_sql)
+df = pd.read_csv(url, encoding="latin1", skiprows=6, skipfooter=4, usecols=cols_sql)
 
 # Rename columns
 cols_map = {
@@ -45,5 +45,4 @@ data_types = {
 df = df.astype(data_types)
 
 # Create SQLite database and write data to the "cars" table
-engine = sa.create_engine("sqlite:///cars.sqlite")
-df.to_sql("cars", engine, if_exists="replace", index=False, dtype=dict(zip(col_names, col_sqlite_types)))
+df.to_sql('cars','sqlite:///cars.sqlite', if_exists='replace', index=False)
