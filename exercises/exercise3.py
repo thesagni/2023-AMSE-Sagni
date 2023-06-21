@@ -45,4 +45,4 @@ data_types = {
 df = df.astype(data_types)
 
 # Create SQLite database and write data to the "cars" table
-df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
+df.to_sql("cars", "sqlite:///cars.sqlite", if_exists="replace", index=False)
