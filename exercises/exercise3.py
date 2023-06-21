@@ -5,7 +5,8 @@ cols = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
 columns = ['date', 'CIN', 'name', 'petrol', 'diesel', 'gas', 'electro', 'hybrid', 'plugInHybrid', 'others']
 
 df = pd.read_csv(url, sep=';', encoding="iso-8859-1", header=None, skiprows=6, skipfooter=4,
-                 usecols=cols, names=columns, engine='python', na_values='.', thousands=',' )
+                 usecols=cols, names=columns, engine='python', na_values='.', thousands=',',
+                 dtype={'CIN': str})
 
 # Filter out rows with '-' in petrol column
 df = df[~df['petrol'].str.contains('-', na=False)]
