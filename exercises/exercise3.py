@@ -1,5 +1,5 @@
 import pandas as pd
-import sqlite3
+import sqlalchemy as sa
 
 cols_sql = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
 # Download the CSV file
@@ -45,4 +45,5 @@ data_types = {
 df = df.astype(data_types)
 
 # Create SQLite database and write data to the "cars" table
-df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
+engine = sa.create_engine("sqlite:///cars.sqlite")
+df.to_sql("cars", engine, if_exists="replace", index=False, dtype=dict(zip(col_names, col_sqlite_types)))
