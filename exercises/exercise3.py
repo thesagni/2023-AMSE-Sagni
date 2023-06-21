@@ -9,7 +9,9 @@ df = pd.read_csv(url, sep=';', encoding="iso-8859-1", header=None, skiprows=6, s
                  dtype={'CIN': str})
 
 # Filter out rows with '-' in petrol column
-df = df[~df['petrol'].str.contains('-', na=False)]
+#df = df[~df['petrol'].str.contains('-', na=False)]
+df = df[df['petrol'].apply(lambda x: '-' not in str(x))]
+
 
 # Ensure 'CIN' column has exactly five characters
 df = df[df['CIN'].str.len() == 5]
