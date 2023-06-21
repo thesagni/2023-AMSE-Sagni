@@ -4,7 +4,7 @@ url = 'https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00
 new_cols = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
 cols = ['date', 'CIN', 'name', 'petrol', 'diesel', 'gas', 'electro', 'hybrid', 'plugInHybrid', 'others']
 
-df = pd.read_csv(url, sep=';', encoding="iso-8859-1", header=None, skiprows=6, skiprows=range(482,487),
+df = pd.read_csv(url, sep=';', encoding="iso-8859-1", header=None, skiprows=6, skipfooter=4,
                  usecols=new_cols, names=cols, engine='python', na_values='.', thousands=',',
                  dtype={'CIN': str})
 
