@@ -12,6 +12,6 @@ df = pd.read_csv(url, sep=';', encoding="latin1", header=None, skiprows=7, skipf
 # Convert data types
 #df = df[df["petrol"].str.contains("-")==False]
 data_types = {'petrol':'int64', 'diesel':'int64', 'gas':'int64', 'electro':'int64', 'hybrid':'int64', 'plugInHybrid':'int64', 'others':'int64'}
-df = df.astype(data_types, dtype={"CIN": str}, na_values="-")
+df = df.astype(data_types).astype({"CIN": str}, copy=False, errors='ignore')
 
 df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
