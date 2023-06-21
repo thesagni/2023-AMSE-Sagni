@@ -11,13 +11,15 @@ df = pd.read_csv(url, sep=';', encoding="latin1", header=None, skiprows=7, skipf
 # Replace '-' values with NaN
 df = df.replace('-', float('nan'))
 
+# Convert CIN column to string type
+df['CIN'] = df['petrol'].astype(str)
+
 # Convert data types
 data_types = {'petrol': 'float64', 'diesel': 'float64', 'gas': 'float64', 'electro': 'float64',
               'hybrid': 'float64', 'plugInHybrid': 'float64', 'others': 'float64'}
 df = df.astype(data_types, copy=False)
 
-# Convert CIN column to string type
-df['CIN'] = df['CIN'].astype(str)
+
 
 # Write data to SQLite database
 df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
