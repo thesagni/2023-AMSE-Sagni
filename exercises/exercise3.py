@@ -10,6 +10,7 @@ df = pd.read_csv(url, sep=';', encoding="latin1", header=None, skiprows=7, skipf
 
 
 df = df[df['petrol'].apply(lambda x: not re.search(r'-', str(x)))]
+df = df[df['CIN'].apply(lambda x: re.match(r'^\d{5}$', str(x)) is not None)]
 
 
 # Convert data types
