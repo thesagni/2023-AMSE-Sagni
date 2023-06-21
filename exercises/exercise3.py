@@ -1,12 +1,18 @@
 import pandas as pd 
 
-url = 'https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv'
-new_cols = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
-cols = ['date', 'CIN', 'name', 'petrol', 'diesel', 'gas', 'electro', 'hybrid', 'plugInHybrid', 'others']
+from io import StringIO
 
-df = pd.read_csv(url, sep=';', encoding="iso-8859-1", header=None, skiprows=6, skipfooter=4,
-                 usecols=new_cols, names=cols, engine='python', na_values='.', thousands=',',
-                 dtype={'CIN': str})
+url = 'https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv'
+cols = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
+column_names = ['date', 'CIN', 'name', 'petrol', 'diesel', 'gas', 'electro', 'hybrid', 'plugInHybrid', 'others']
+skiprows = 6
+
+response = requests.get(url)
+data = response.text.split('\n')[skiprows:-4]
+data = '\n'.join(data)
+
+df = pd.read_csv(StringIO(data), sep=';', encoding='iso-8859-1', header=None, usecols=cols, names=column_names,
+                 engine='python', na_values='.', thousands=',', dtype={'CIN': str})
 
 # Filter out rows with '-' in petrol column
 df = df[df['petrol'].apply(lambda x: '-' not in str(x))]
