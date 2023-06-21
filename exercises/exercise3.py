@@ -45,8 +45,4 @@ data_types = {
 df = df.astype(data_types)
 
 # Create SQLite database and write data to the "cars" table
-conn = sqlite3.connect('cars.sqlite')
-df.to_sql('cars', conn, if_exists='replace', index=False)
-
-# Close the database connection
-conn.close()
+df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
