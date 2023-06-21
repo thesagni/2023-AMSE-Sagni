@@ -9,7 +9,6 @@ df = pd.read_csv(url, sep=';', encoding="iso-8859-1", header=None, skiprows=6, s
                  dtype={'CIN': str})
 
 # Filter out rows with '-' in petrol column
-#df = df[~df['petrol'].str.contains('-', na=False)]
 df = df[df['petrol'].apply(lambda x: '-' not in str(x))]
 
 
@@ -17,9 +16,9 @@ df = df[df['petrol'].apply(lambda x: '-' not in str(x))]
 df = df[df['CIN'].str.len() == 5]
 
 # Convert data types
-data_types = {'petrol': 'int64', 'diesel': 'int64', 'gas': 'int64', 'electro': 'int64',
+dtypes = {'petrol': 'int64', 'diesel': 'int64', 'gas': 'int64', 'electro': 'int64',
               'hybrid': 'int64', 'plugInHybrid': 'int64', 'others': 'int64'}
-df = df.astype(data_types)
+df = df.astype(dtypes)
 
 # Write data to SQLite database
 df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
