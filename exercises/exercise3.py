@@ -1,4 +1,5 @@
 import pandas as pd 
+import re
 
 url = 'https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv'
 cols = [0, 1, 2, 12, 22, 32, 42, 52, 62, 72]
@@ -9,11 +10,7 @@ df = pd.read_csv(url, sep=';', encoding="latin1", header=None, skiprows=7, skipf
                  converters={'CIN': str})
 
 
-# Convert CIN column to string type
-df['CIN'] = df['petrol'].astype(str)
-
-# Replace '-' values with NaN
-df = df.replace('-', float('nan'))
+df = df[df['petrol'].apply(lambda x: not re.search(r'-', str(x)))]
 
 
 # Convert data types
