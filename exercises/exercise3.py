@@ -8,11 +8,13 @@ df = pd.read_csv(url, sep=';', encoding="latin1", header=None, skiprows=7, skipf
                  usecols=cols, names=columns, engine='python',
                  converters={'CIN': str})
 
-# Replace '-' values with NaN
-df = df.replace('-', float('nan'))
 
 # Convert CIN column to string type
 df['CIN'] = df['petrol'].astype(str)
+
+# Replace '-' values with NaN
+df = df.replace('-', float('nan'))
+
 
 # Convert data types
 data_types = {'petrol': 'float64', 'diesel': 'float64', 'gas': 'float64', 'electro': 'float64',
