@@ -10,18 +10,8 @@ df = pd.read_csv(url, sep=';', encoding="latin1", header=None, skiprows=7, skipf
                  converters={'CIN': str})
 
 # Convert data types
-data_types = {
-    'date': 'TEXT',
-    'CIN': 'TEXT',
-    'name': 'TEXT',
-    'petrol': 'INTEGER',
-    'diesel': 'INTEGER',
-    'gas': 'INTEGER',
-    'electro': 'INTEGER',
-    'hybrid': 'INTEGER',
-    'plugInHybrid': 'INTEGER',
-    'others': 'INTEGER'
-}
+df = df[df["petrol"].str.contains("-")==False]
+data_types = {'petrol':'int64', 'diesel':'int64', 'gas':'int64', 'electro':'int64', 'hybrid':'int64', 'plugInHybrid':'int64', 'others':'int64'}
 df = df.astype(data_types)
 
 df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
