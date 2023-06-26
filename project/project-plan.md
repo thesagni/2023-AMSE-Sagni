@@ -28,6 +28,12 @@ Data of bicycle counting stations in city of Münster
 * Data Type: CSV
 Road Accident Data in Germany
 
+### Datasource3: Münster Polizie Nordrhein-Westfalen
+* Metadata URL 2: https://muenster.polizei.nrw/artikel/verkehrsunfallstatistik-2021-1
+* Data URL 2: https://muenster.polizei.nrw/sites/default/files/2022-03/Verkehrsunfallbilanz%202021
+* Data Type: XLS
+Road Accident Data in Münster
+
 Münster is famous for it's bicycle traffic and hence we see an increase in bicycle stations in this city in recent years.
 This projects draws a connections between the increase in cycle stations (hence the cycle traffic) in Münster with the road accidents rate increase in Germany in the year 2020 and 2021
 
