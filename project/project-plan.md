@@ -4,8 +4,8 @@
 
 <!-- Describe your data science project in max. 5 sentences. -->
 It has been seen in recent years that the rate of accidents has increased. 
-So aim of this project is to identify how much of the increased rate of accidents is related to the increase in bicycle traffic.
-So, This projects draws a connections between the available cycle stations in Münster on how the rate of road accidents with the road accidents in those regions. 
+So aim of this project is to identify how much of the increased rate of accidents is related to the increase in bicycle traffic in the city of Münster.
+So, This projects draws a connections between the available cycle stations in Münster with the road accidents in Germany. 
 
 ## Rationale
 
@@ -25,10 +25,11 @@ Data of bicycle counting stations in city of Münster
 ### Datasource2:Federal Statistical Office of Germany
 * Metadata URL 2: https://www.destatis.de/
 * Data URL 2: https://www-genesis.destatis.de/genesis/online?language=en&sequenz=statistikTabellen&selectionname=46241#abreadcrumb
-* Data Type: PDF
-Road Accident Data in city of Münster
+* Data Type: CSV
+Road Accident Data in Germany
 
-This projects draws a connections between the available cycle stations in Münster on how the rate of road accidents with the road accidents in those regions.
+Münster is famous for it's bicycle traffic and hence we see an increase in bicycle stations in this city in recent years.
+This projects draws a connections between the increase in cycle stations (hence the cycle traffic) in Münster with the road accidents rate increase in Germany in the year 2020 and 2021
 
 ## Work Packages
 
