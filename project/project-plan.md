@@ -5,7 +5,7 @@
 <!-- Describe your data science project in max. 5 sentences. -->
 It has been seen in recent years that the rate of accidents has increased. 
 So aim of this project is to identify how much of the increased rate of accidents is related to the increase in bicycle traffic.
-So, this projects analyzes the increase of road accidents with increase in bicycle traffic. 
+So, This projects draws a connections between the available cycle stations in Münster on how the rate of road accidents with the road accidents in those regions. 
 
 ## Rationale
 
@@ -28,7 +28,7 @@ Data of bicycle counting stations in city of Münster
 * Data Type: PDF
 Road Accident Data in city of Münster
 
-This projects focuses on how the rate of road accidents have changed (increased) with the increase in the bicycle traffic in the recent years. It focuses on the data from 2019-2023.
+This projects draws a connections between the available cycle stations in Münster on how the rate of road accidents with the road accidents in those regions.
 
 ## Work Packages
 
