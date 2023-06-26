@@ -28,5 +28,13 @@ df.rows.value[25] = 'Total Accidents - Outside built-up areas'
 df.rows.value[26] = 'Total Accidents - On motorways/freeways'
 df.rows.value[27] = 'Total Accidents'
 
+#downloading 3rd data souce
+#data source- https://muenster.polizei.nrw/artikel/verkehrsunfallstatistik-2021-1
+
+df = pd.read_csv('C:/Users/reham/Desktop/subj sem 4/AMSE(DATA ENGG)/data/datasource3',sep=',') 
+
+#renaming needed rows :
+df.rows.value[4] = 'Total Accidents - Münster'
+
 #saving table to sqlite file
 df.to_sql('Bicycle_Accidents','sqlite:///Bicycle_data.sqlite', if_exists='replace', index=False)
