@@ -1,18 +1,19 @@
 import pandas as pd
 #downloading 1st data souce
 
+df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-07.csv',sep=',') 
+df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-08.csv',sep=',') 
+df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-09.csv',sep=',') 
+df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-10.csv',sep=',') 
+df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-11.csv',sep=',') 
+df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-12.csv',sep=',') 
 df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2021-01.csv',sep=',') 
 df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2021-02.csv',sep=',') 
 df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2021-03.csv',sep=',') 
 df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2021-04.csv',sep=',') 
 df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2021-05.csv',sep=',') 
 df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2021-06.csv',sep=',') 
-df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-01.csv',sep=',') 
-df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-02.csv',sep=',') 
-df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-03.csv',sep=',') 
-df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-04.csv',sep=',') 
-df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-05.csv',sep=',') 
-df = pd.read_csv('https://github.com/od-ms/radverkehr-zaehlstellen/blob/main/100031297/2020-06.csv',sep=',') 
+
 
 df.columns.value[0]= 'Total Bicylce count'
 
