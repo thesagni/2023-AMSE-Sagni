@@ -1,3 +1,0 @@
-#implementing .gitignore to ignore the sqlite and csv file
-.csv
-.sqlite
