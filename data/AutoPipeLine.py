@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import sqlite3
 
-# Define the paths to the CSV files
+# Define the paths to the CSV file
 csv_files = [
     'data/2020-06.csv',
     'data/2020-07.csv',
