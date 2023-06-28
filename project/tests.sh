@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Execute the data pipeline
-python3 data/AutoPipeLine.py
+python3 ./main/data/AutoPipeLine.py
 
-data_file="data/Bicycle_data.sqlite"
+data_file="./main/data/Bicycle_data.sqlite"
+
 
 # Check if the output file exists
 if [ -f "$data_file" ]; then
