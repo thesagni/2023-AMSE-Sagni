@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Execute the data pipeline
-python3 AutoPipeLine.py
+python3 data/AutoPipeLine.py
 
 data_file="data/Bicycle_data.sqlite"
 
