@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Execute the data pipeline
 python3 AutoPipeLine.py
 
@@ -9,6 +11,7 @@ if [ -f "$data_file" ]; then
 else
     echo "No! Output file $data_file is not available."
 fi
+
 
 
 
