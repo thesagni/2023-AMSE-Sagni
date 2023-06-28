@@ -29,8 +29,8 @@ Data of bicycle counting stations in city of Münster
 Road Accident Data in Germany
 
 ### Datasource3: Münster Polizie Nordrhein-Westfalen
-* Metadata URL 2: https://muenster.polizei.nrw/artikel/verkehrsunfallstatistik-2021-1
-* Data URL 2: https://muenster.polizei.nrw/sites/default/files/2022-03/Verkehrsunfallbilanz%202021
+* Metadata URL 3: https://muenster.polizei.nrw/artikel/verkehrsunfallstatistik-2021-1
+* Data URL 3: https://muenster.polizei.nrw/sites/default/files/2022-03/Verkehrsunfallbilanz%202021
 * Data Type: XLS
 Road Accident Data in Münster
 
