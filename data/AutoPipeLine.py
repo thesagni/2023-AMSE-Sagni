@@ -35,16 +35,15 @@ for file in csv_files:
 combined_df = pd.concat(dfs)
 
 # Rename the desired column
-combined_df.rename(columns={'Unnamed: 1': 'Total Bicycle count'}, inplace=True)
+combined_df.rename(columns={'Unnamed: 1': 'Total Bicycle Count'}, inplace=True)
 
 # Save the combined DataFrame to a CSV file in the /data directory
 combined_df.to_csv(os.path.join(data_folder, 'combined_data.csv'), index=False)
 
 # Read the AccidentData2.excel file
-accident_df =pd.read_excel('C:/Users/reham/Desktop/AccidentData2.xlsx')
+accident_df = pd.read_excel('C:/Users/reham/Desktop/AccidentData2.xlsx')
 
 # Rename the desired rows
-
 accident_df.iloc[21, 0] = 'Total Accidents'
 
 # Save the accident_df to a CSV file in the /data directory
