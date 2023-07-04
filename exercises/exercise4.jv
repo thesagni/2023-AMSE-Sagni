@@ -5,6 +5,45 @@ transform CelsiusToFahrenheit
 
   tempFahrenheit: (tempCelsius * 9/5) + 32;
 }
-pipeline TempPipleLine
+pipeline TempBaterry
 {
+    block FileExtractor oftype HttpExtractor {url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip"; }
+    block ZipInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
+    block DataPicker oftype FilePicker { path: "/data.csv";}
+
+    block TextInterpreter oftype TextFileInterpreter {}
+    block CSVInterpreter oftype CSVInterpreter { delimiter: ";"; }
+    block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
+    block ColDeleter oftype ColumnDeleter { delete: [column F, column G, column H, column I]; }
+    block TableDataInterpreter oftype TableInterpreter {
+        header: false;
+        columns: [
+            "Geraet" oftype integer, "Hersteller" oftype text,"Model" oftype text,
+            "Monat" oftype integer, "Temperatur" oftype decimal, "Batterietemperatur" oftype decimal,
+            "Geraet aktiv" oftype text
+        ];
+    }
+    block TempConverter oftype TableTransformer 
+  {
+      inputColumn: 'Temperatur in °C (DWD)';
+      outputColumn: 'Temperatur';
+      use: CelciusToFahrenheit
+    }
+       block DatabaseLoader oftype SQLiteLoader 
+    { 
+        table: "temperatures"; 
+        file: "./temperatures.sqlite"; 
+    }
+
+    DataExtractor
+    ->ZipInterpreter
+    ->DataPicker
+    ->TextInterpreter
+    ->CSVInterpreter
+    ->ColDataSelector
+    ->ColDeleter
+    ->TableDataInterpreter
+    ->TempConverter
+    ->DatabaseLoader;
+}
   
