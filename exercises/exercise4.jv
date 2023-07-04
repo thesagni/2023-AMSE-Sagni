@@ -25,11 +25,16 @@ pipeline Ex4Pipeline{
             "Geraet aktiv" oftype text
         ];
     }
-  block TempTransformer oftype TableTransformer {
-      inputColumn: 'Temperatur in °C (DWD)';
-      outputColumn: 'Temperatur';
-      use: CelciusToFahrenheit
+ block TempTransformerA oftype TableTransformer {
+        inputColumn: 'Temperatur';
+        outputColumn: 'Temperatur';
+        use: CelsiusToFahrenheit;
     }
+
+    block TempTransformerB oftype TableTransformer {
+        inputColumn: 'Batterietemperatur';
+        outputColumn: 'Batterietemperatur';
+        use: CelsiusToFahrenheit;
 
 
        block DatabaseLoader oftype SQLiteLoader { 
@@ -44,7 +49,7 @@ pipeline Ex4Pipeline{
     ->DataCSVInterpreter
     ->ColumnDataSelector
     ->FGHIColumnDeleter
-    ->DataTableInterpreter
-    -> TempTransformer
+    ->TempTransformerA
+    ->TempTransformerB
     ->DatabaseLoader;
 }
