@@ -1,57 +1,56 @@
-pipeline TrainstopsPipeline 
+transform CelsiusToFahrenheit
 {
-    valuetype Verkehr oftype text
-    {
-        constraints : [VerkehrNames];
-    }
-    constraint VerkehrNames oftype AllowlistConstraint
-    {
-        allowlist: ["FV", "RV", "nur DPN"];
-    }
-    valuetype GeographicCoordi oftype decimal
-    {
-        constraints: [Geo];
-    }
-    constraint Geo oftype RangeConstraint
-    {
-        lowerBound: -90;
-		lowerBoundInclusive: true;
-		upperBound: 90;
-		upperBoundInclusive: true;
-    }
-    valuetype IFOPT oftype text
-    {
-        constraints : [IFOPTVal];
-    }
-    constraint IFOPTVal oftype RegexConstraint
-    {
-        regex: /[a-z]{2}:\d+:\d+(:\d+)?(:\d+)?/;
-    }
-    
-    block DataExtractor oftype HttpExtractor { url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV" ;}
+  from tempCelsius oftype decimal;
+  to tempFahrenheit oftype decimal;
 
-    block TrainstpsTxtFileInterpreter oftype TextFileInterpreter {}
+  tempFahrenheit: (tempCelsius * 9/5) + 32;
+}
+pipeline TempBaterry
+{
+    block FileExtractor oftype HttpExtractor {url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip"; }
+    block ZipInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
+    block DataPicker oftype FilePicker { path: "/data.csv";}
 
-    block TrainstpsCSVInterpreter oftype CSVInterpreter 
-    {
-        delimiter: ";";
-    }
-
-    block TrainstpsTableInterpreter oftype TableInterpreter 
-    {
-        header: true;
+    block TextInterpreter oftype TextFileInterpreter {}
+    block CSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";"; }
+    block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
+    block ColDeleter oftype ColumnDeleter { delete: [column F, column G, column H, column I]; }
+    block TableDataInterpreter oftype TableInterpreter {
+        header: false;
         columns: [
-            "EVA_NR" oftype integer, "DS100" oftype text, "IFOPT" oftype IFOPT, "NAME" oftype text,
-            "Verkehr" oftype Verkehr, "Laenge" oftype GeographicCoordi, "Breite" oftype GeographicCoordi, 
-            "Betreiber_Name" oftype text, "Betreiber_Nr" oftype integer,
+            "Geraet" oftype integer, "Hersteller" oftype text,"Model" oftype text,
+            "Monat" oftype integer, "Temperatur" oftype decimal, "Batterietemperatur" oftype decimal,
+            "Geraet aktiv" oftype text
         ];
     }
+ block CelsiusToFahrenheitTTransformer oftype TableTransformer {
+        inputColumn: 'Temperatur';
+        outputColumn: 'Temperatur';
+        use: CelsiusToFahrenheit;
+    }
 
-    block TrainDataLoader oftype SQLiteLoader { table: "Trainstops"; file: "trainstops.sqlite";}
+    block CelsiusToFahrenheitBTTransformer oftype TableTransformer {
+        inputColumn: 'Batterietemperatur';
+        outputColumn: 'Batterietemperatur';
+        use: CelsiusToFahrenheit;
+    }
+
+       block DatabaseLoader oftype SQLiteLoader { 
+        table: "temperatures"; 
+        file: "./temperatures.sqlite"; 
+    }
+
 
     DataExtractor
-        ->TrainstpsTxtFileInterpreter
-        ->TrainstpsCSVInterpreter
-        ->TrainstpsTableInterpreter
-        ->TrainDataLoader;
+    ->ZipInterpreter
+    ->DataPicker
+    ->TextInterpreter
+    ->CSVInterpreter
+    ->ColDataSelector
+    ->ColDeleter
+    ->TableDataInterpreter
+    ->CelsiusToFahrenheitTTransformer
+    ->CelsiusToFahrenheitBTTransformer
+    ->DatabaseLoader;
 }
+  
