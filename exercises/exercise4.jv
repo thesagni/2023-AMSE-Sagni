@@ -1,4 +1,4 @@
-transform CelsiusToFahrenheit
+transform TempConvert
 {
   from tempCelsius oftype decimal;
   to tempFahrenheit oftype decimal;
@@ -17,7 +17,7 @@ pipeline TempBaterry
     block TableDataInterpreter oftype TableInterpreter {
         header: false;
         columns: [
-            "Geraet" oftype GeraetID,
+            "Geraet" oftype integer,
             "Hersteller" oftype text,
             "Model" oftype text,
             "Monat" oftype integer,
@@ -30,14 +30,14 @@ pipeline TempBaterry
    {
         inputColumn: 'Temperatur';
         outputColumn: 'Temperatur';
-        use: CelsiusToFahrenheit;
+        use: TempConvert;
     }
 
     block TempTransformerB oftype TableTransformer 
     {
         inputColumn: 'Batterietemperatur';
         outputColumn: 'Batterietemperatur';
-        use: CelsiusToFahrenheit;
+        use: TempConvert;
     }
 
     block DataLoader oftype SQLiteLoader 
