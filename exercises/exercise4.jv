@@ -8,9 +8,8 @@ transform CelsiusToFahrenheit
 pipeline TempBaterry
 {
     block FileExtractor oftype HttpExtractor {url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip"; }
-    block ZipInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
+    block ZipArchiveInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
     block DataPicker oftype FilePicker { path: "/data.csv";}
-
     block TextInterpreter oftype TextFileInterpreter {}
     block CSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";"; }
     block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
@@ -40,7 +39,7 @@ pipeline TempBaterry
     }
 
     DataExtractor
-    ->ZipInterpreter
+    ->ZipArchiveInterpreter
     ->DataPicker
     ->TextInterpreter
     ->CSVInterpreter
