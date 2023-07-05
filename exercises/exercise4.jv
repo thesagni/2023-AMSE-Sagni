@@ -11,7 +11,7 @@ pipeline TempBaterry
     block ZipArchiveInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
     block DataPicker oftype FilePicker { path: "/data.csv";}
     block TextInterpreter oftype TextFileInterpreter {}
-    block CSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";"; }
+    block CSVInterpreter oftype CSVInterpreter {delimiter: ";"; }
     block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
     block ColDeleter oftype ColumnDeleter { delete: [column F, column G, column H, column I]; }
     block TableDataInterpreter oftype TableInterpreter {
