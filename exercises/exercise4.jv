@@ -42,7 +42,7 @@ pipeline TempBaterry
         file: "./temperatures.sqlite"; 
     }
 
-    DataExtractor
+    FileExtractor
     ->ZipArchiveInterpreter
     ->DataPicker
     ->TextInterpreter
