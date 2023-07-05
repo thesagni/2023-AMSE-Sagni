@@ -1,7 +1,7 @@
 transform TempConvert
 {
-  from TCelsius oftype decimal;
-  to TFahrenheit oftype decimal;
+  from tempCelsius oftype decimal;
+  to tempFahrenheit oftype decimal;
 
   tempFahrenheit: (tempCelsius * 9/5) + 32;
 }
