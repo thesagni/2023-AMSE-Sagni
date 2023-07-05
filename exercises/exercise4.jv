@@ -47,10 +47,10 @@ pipeline TempBaterry
     FileExtractor
     ->ZipInterpreter
     ->DataPicker
-    ->TextInterpreter
     ->CSVInterpreter
-    ->ColDataSelector
+    ->TextInterpreter
     ->ColDeleter
+    ->ColDataSelector
     ->TableDataInterpreter
     ->TempTransformerA
     ->TempTransformerB
