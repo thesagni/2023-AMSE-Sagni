@@ -22,18 +22,22 @@ pipeline TempBaterry
             "Geraet aktiv" oftype text
         ];
     }
-  block CelsiusToFahrenheitTTransformer oftype TableTransformer {
+  block CelsiusToFahrenheitTTransformer oftype TableTransformer
+   {
         inputColumn: 'Temperatur';
         outputColumn: 'Temperatur';
         use: CelsiusToFahrenheit;
     }
 
-    block CelsiusToFahrenheitBTTransformer oftype TableTransformer {
+    block CelsiusToFahrenheitBTTransformer oftype TableTransformer 
+    {
         inputColumn: 'Batterietemperatur';
         outputColumn: 'Batterietemperatur';
         use: CelsiusToFahrenheit;
+    }
 
-       block DatabaseLoader oftype SQLiteLoader { 
+    block DatabaseLoader oftype SQLiteLoader 
+    { 
         table: "temperatures"; 
         file: "./temperatures.sqlite"; 
     }
