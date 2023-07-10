@@ -3,7 +3,7 @@ import urllib.request
 import pandas as pd
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
 
-# 1: Download and unzip data
+# Downloading and unzipping data
 zip = "https://gtfs.rhoenenergie-bus.de/GTFS.zip"
 zip_path = "GTFS.zip"
 filename = "stops.txt"
@@ -12,16 +12,16 @@ urllib.request.urlretrieve(zip, zip_path)
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extract(filename)
 
-# 2: Reshape data
-# Only use columns
+# Reshaping data - by using only columns : "stop_id", "stop_name", "stop_lat", "stop_lon", "zone_id"
+
 columns = ["stop_id", "stop_name", "stop_lat", "stop_lon", "zone_id"]
 
 df = pd.read_csv(filename, usecols=columns)
 
-# 3: Filter data
+# Filtering data
 df = df[df["zone_id"] == 2001]
 
-# 4: Validate data
+# Validating data
 # Text validation for stop_name
 df["stop_name"] = df["stop_name"].astype(str)
 
@@ -31,7 +31,7 @@ valid_lat_range = df["stop_lat"].between(*valid_coord_range)
 valid_lon_range = df["stop_lon"].between(*valid_coord_range)
 df = df[valid_lat_range & valid_lon_range]
 
-# 5: Use fitting SQLite types & Write data into SQLite database
+# Use fitting SQLite types & Write data into SQLite database
 engine = create_engine('sqlite:///gtfs.sqlite')
 metadata = MetaData()
 stops_table = Table('stops', metadata,
